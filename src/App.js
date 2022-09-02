@@ -1,4 +1,8 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+
 
 import './App.css';
 import {
@@ -17,6 +21,18 @@ import Logout from "./pages/Logout";
 import FormComponent from "./pages/Form";
 
 function App() {
+  let dispatch = useDispatch();
+  let selector = useSelector(state => state);
+
+
+  useEffect(() => {
+
+    // get the data from local storage and set it in redux
+    dispatch({ type: "SET_DATA", payload: JSON.parse(localStorage.getItem("data")) })
+
+  }, [])
+
+
   return (
 
     <div>

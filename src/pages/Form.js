@@ -5,18 +5,19 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux'
 
 const FormComponent = () => {
-    let navigate = useNavigate();
     let dispatch = useDispatch();
+    let navigate = useNavigate();
 
     // if the user is not logged in, redirect to the login page
+
     useEffect(() => {
 
-        const isLoggedIn = localStorage.getItem("is_logged_in");
-        if (!isLoggedIn) {
+
+        if (!JSON.parse(localStorage.getItem("is_logged_in"))) {
             navigate("../login", { replace: true });
         }
 
-    })
+    }, [])
 
 
     const submitForm = (values) => {

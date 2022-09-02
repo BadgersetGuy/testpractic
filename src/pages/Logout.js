@@ -1,8 +1,17 @@
+import {
+    Link
+} from "react-router-dom";
+
 const Logout = () => {
+    
+    const setLoggedIn = () => {
+        localStorage.setItem("is_logged_in", false);
+    };
+
     return (
-  
-      <div>
-        {/* <h1>Login</h1> */}
+
+      <div className="text-3xl font-bold underline">
+        <Link to="/" onClick={setLoggedIn}>Log out</Link>
       </div>
   
     );
