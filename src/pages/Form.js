@@ -12,7 +12,6 @@ const FormComponent = () => {
 
     useEffect(() => {
 
-
         if (!JSON.parse(localStorage.getItem("is_logged_in"))) {
             navigate("../login", { replace: true });
         }
@@ -51,7 +50,7 @@ const FormComponent = () => {
     
         return (
   
-            <div>
+            <div className="grid justify-center p-32">
                 <Formik
                 initialValues={{ email: '', dob: '' }}
                 validate={values => {
@@ -76,7 +75,6 @@ const FormComponent = () => {
                 }}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
 
                     submitForm(values);
 
@@ -85,12 +83,12 @@ const FormComponent = () => {
                 }}
                 >
                 {({ isSubmitting }) => (
-                    <Form className="bg-slate-50 p-8">
-                    <Field type="email" name="email" />
-                    <ErrorMessage name="email" component="div" />
-                    <Field type="date" name="dob" />
-                    <ErrorMessage name="dob" component="div" />
-                    <button type="submit" disabled={isSubmitting}>
+                    <Form className="bg-slate-100 p-8 flex flex-col gap-4" style={{width: '360px', maxWidth: '90vw'}}>
+                    <Field className="p-2" type="email" name="email" />
+                    <ErrorMessage className="text-red-600" name="email" component="div" />
+                    <Field className="p-2 mt-4" type="date" name="dob" />
+                    <ErrorMessage className="text-red-600" name="dob" component="div" />
+                    <button className="rounded mt-4 text-white bg-slate-600 p-4" type="submit" disabled={isSubmitting}>
                         Submit
                     </button>
                     </Form>
@@ -99,8 +97,6 @@ const FormComponent = () => {
             </div>
         
           );
-    
-
 
   }
   

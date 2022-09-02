@@ -16,10 +16,6 @@ const Movies = () => {
             setMovies(data);
         })
 
-
-
-
-
     }, [])
 
     return (
