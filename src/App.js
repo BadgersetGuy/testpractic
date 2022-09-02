@@ -6,12 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import './App.css';
 import {
-  BrowserRouter,
-  Switch,
   Route,
-  Routes,
-
-  Link
+  Routes
 } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -19,10 +15,10 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import FormComponent from "./pages/Form";
+import Movies from "./pages/Movies";
 
 function App() {
   let dispatch = useDispatch();
-  let selector = useSelector(state => state);
 
 
   useEffect(() => {
@@ -41,6 +37,8 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="logout" element={<Logout />} />
           <Route path="form" element={<FormComponent />} /> 
+          <Route path="movies" element={<Movies />} /> 
+
         </Routes>
     </div>
 
