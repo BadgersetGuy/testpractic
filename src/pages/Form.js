@@ -2,20 +2,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-
+import { useDispatch } from 'react-redux'
 
 const FormComponent = () => {
     let navigate = useNavigate();
-
-    const submitForm = (values) => {
-        // first set the values in local storage
-        localStorage.setItem("data", JSON.stringify(values));
-        
-        // then set the values in redux
-        
-        // redirect to the home page
-        navigate("../", { replace: true });
-    };
+    let dispatch = useDispatch();
 
     // if the user is not logged in, redirect to the login page
     useEffect(() => {
@@ -26,6 +17,35 @@ const FormComponent = () => {
         }
 
     })
+
+
+    const submitForm = (values) => {
+        // first get the existing values from local storage data
+        let data = JSON.parse(localStorage.getItem("data"));
+        let user = values
+
+        if(!data) {
+            data = {};
+        }
+
+        // get count of users
+        let count = Object.keys(data).length;
+
+        // add new user to the data object
+        data['user'+count] = user;
+        console.log('dta', data)
+
+        // save the data to local storage
+        localStorage.setItem("data", JSON.stringify(data));
+
+        // then set the values in redux
+        dispatch({ type: "SET_DATA", payload: data })
+
+        // redirect to the home page
+        navigate("../", { replace: true });
+    };
+
+
 
     
         return (
