@@ -1,20 +1,27 @@
 
 import { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
+
 
 const Home = () => {
 
+    const select = useSelector(state => state.data);
     const [userData, setUserData] = useState(null);
+
 
     useEffect(() => {
 
-        const data = JSON.parse(localStorage.getItem("data"));
+        // const data = JSON.parse(localStorage.getItem("data"));
+        // get data from redux store instead of localstorage
+        const data = select;
 
-        if(data) {
+
+        if(Object.keys(data).length > 0) {
             setUserData(Object.values(data));
         }
 
 
-    }, [])
+    }, [select])
 
 
     const sort = () => {
