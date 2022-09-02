@@ -15,7 +15,7 @@ import Home from "./pages/Home";
 
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
-import Form from "./pages/Form";
+import FormComponent from "./pages/Form";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="logout" element={<Logout />} />
-          <Route path="form" element={<Form />} /> 
+          <Route path="form" element={<FormComponent />} /> 
         </Routes>
     </div>
 
